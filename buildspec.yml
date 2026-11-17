@@ -2,24 +2,17 @@ version: 0.2
 
 phases:
   install:
+    runtime-versions:
+      python: 3.11
     commands:
-      - echo "Install phase"
-
-  pre_build:
-    commands:
-      - echo "Pre build phase"
+      - echo Installing dependencies
+      - pip install -r requirements.txt
 
   build:
     commands:
-      - echo "Build started"
-      - mkdir -p output
-      - cp src/index.html output/index.html
-
-  post_build:
-    commands:
-      - echo "Build completed"
+      - echo Running Python build
+      - python --version
 
 artifacts:
   files:
     - '**/*'
-  base-directory: output
