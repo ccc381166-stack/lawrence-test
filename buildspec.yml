@@ -1,20 +1,25 @@
-
 version: 0.2
 
 phases:
   install:
-    runtime-versions:
-      java: corretto17
+    commands:
+      - echo "Install phase"
+
   pre_build:
     commands:
-      - echo "Start building..."
+      - echo "Pre build phase"
+
   build:
     commands:
-      - mvn clean package
+      - echo "Build started"
+      - mkdir -p output
+      - cp src/index.html output/index.html
+
   post_build:
     commands:
       - echo "Build completed"
 
 artifacts:
   files:
-    - target/*.jar
+    - '**/*'
+  base-directory: output
